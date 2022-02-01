@@ -71,6 +71,8 @@ function capitalise(word)
 
 function game()
 {
+    console.log('Best of five!')
+
     let playerScore = 0;
     let computerScore = 0;
 
