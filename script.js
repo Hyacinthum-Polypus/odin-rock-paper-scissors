@@ -57,7 +57,7 @@ function round(playerSelection, computerSelection)
 
 function capitalise(word)
 {
-    word = word.spilt('');
+    word = word.split('');
 
     word[0] = word[0].toUpperCase();
 
