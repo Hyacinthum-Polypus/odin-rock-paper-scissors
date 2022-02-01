@@ -76,7 +76,7 @@ function game()
 
     while(playerScore < 3 && computerScore < 3)
     {
-        const playerSelection = prompt('Rock, Paper, Scissors?');
+        const playerSelection = prompt('Rock Paper Scissors?');
         
         const result = round(playerSelection, computerPlay());
 
