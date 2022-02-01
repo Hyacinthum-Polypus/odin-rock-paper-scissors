@@ -17,3 +17,54 @@ function computerPlay()
     }
 }
 
+function round(playerSelection, computerSelection)
+{
+    //Remove capitalisation from player selection.
+    playerSelection = playerSelection.toLowerCase();
+
+    switch(playerSelection)
+    {
+        case computerSelection:
+            return `Draw! ${capitalise(playerSelection)} ties with ${capitalise(computerSelection)}`;
+        case 'rock':
+            switch(computerSelection)
+            {
+                case 'paper':
+                    return 'You Lose! Paper beats Rock!';
+                case 'scissors':
+                    return 'You Win! Rock beats Scissors!';
+            }
+        case 'paper':
+            switch(computerSelection)
+            {
+                case 'rock':
+                    return 'You Win! Paper beats Rock!';
+                case 'scissors':
+                    return 'You Lose! Scissors beats Paper!';
+            }
+        case 'scissors':
+            switch(computerSelection)
+            {
+                case 'rock':
+                    return 'You Lose! Rock beats Scissors!';
+                case 'paper':
+                    return 'You Win! Scissors beats Rock!';
+            }
+        default:
+            console.error("Invalid player selection! Rock, paper or scissors are the only valid inputs.")
+    }
+}
+
+function capitalise(word)
+{
+    word = word.spilt('');
+
+    word[0] = word[0].toUpperCase();
+
+    for(let letter = 1; letter < word.length; letter++)
+    {
+        word[letter] = word[letter].toLowerCase();
+    }
+
+    return word.join('');
+}
