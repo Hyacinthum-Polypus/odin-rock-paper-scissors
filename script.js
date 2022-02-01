@@ -68,3 +68,38 @@ function capitalise(word)
 
     return word.join('');
 }
+
+function game()
+{
+    let playerScore = 0;
+    let computerScore = 0;
+
+    while(playerScore < 3 && computerScore < 3)
+    {
+        const playerSelection = prompt('Rock, Paper, Scissors?');
+        
+        const result = round(playerSelection, computerPlay());
+
+        if(result.substr(0, 8) === 'You Win!')
+        {
+            playerScore++;
+        }
+        else if(result.substr(0, 9) == 'You Lose!')
+        {
+            computerScore++;
+        }
+
+        console.log(result);
+    }
+
+    if(playerScore > computerScore)
+    {
+        console.log('You Win! Great Job!');
+    }
+    else
+    {
+        console.log('You Lose! Better Luck Next Time!');
+    }
+}
+
+game();
