@@ -69,39 +69,14 @@ function capitalise(word)
     return word.join('');
 }
 
-function game()
-{
-    console.log('Best of five!')
+const para = document.getElementById('content');
 
-    let playerScore = 0;
-    let computerScore = 0;
+const rockButton = document.getElementById('rock');
+rockButton.addEventListener('click', () => para.textContent = round('rock', computerPlay()));
 
-    while(playerScore < 3 && computerScore < 3)
-    {
-        const playerSelection = prompt('Rock Paper Scissors?');
-        
-        const result = round(playerSelection, computerPlay());
+const paperButton = document.getElementById('paper');
+paperButton.addEventListener('click', () => para.textContent = round('paper', computerPlay()));
 
-        if(result.substr(0, 8) === 'You Win!')
-        {
-            playerScore++;
-        }
-        else if(result.substr(0, 9) == 'You Lose!')
-        {
-            computerScore++;
-        }
+const scissorsButton = document.getElementById('scissors');
+scissorsButton.addEventListener('click', () => para.textContent = round('scissors', computerPlay()));
 
-        console.log(result);
-    }
-
-    if(playerScore > computerScore)
-    {
-        console.log('You Win! Great Job!');
-    }
-    else
-    {
-        console.log('You Lose! Better Luck Next Time!');
-    }
-}
-
-game();
