@@ -69,14 +69,46 @@ function capitalise(word)
     return word.join('');
 }
 
-const para = document.getElementById('content');
+const resultOutput = document.getElementById('result');
+const scoreTally = document.getElementById('score');
+
+let humanScore = 0;
+let computerScore = 0;
+
+function game(result)
+{
+    if(humanScore < 5 && computerScore < 5)
+    {
+        if(result.substr(0, 8) === 'You Win!')
+        {
+            humanScore++;
+        }
+        else if(result.substr(0, 9) == 'You Lose!')
+        {
+            computerScore++;
+        }
+
+        resultOutput.textContent = result;
+        scoreTally.textContent = `Human: ${humanScore} | Computer: ${computerScore}`
+
+        if(humanScore === 5)
+        {
+            scoreTally.textContent = "Human Wins! Great Job!";
+        }
+        else if(computerScore === 5)
+        {
+            scoreTally.textContent = "You Lose! Better Luck Next Time!";
+        }
+    }
+}
+
 
 const rockButton = document.getElementById('rock');
-rockButton.addEventListener('click', () => para.textContent = round('rock', computerPlay()));
+rockButton.addEventListener('click', () => game(round('rock', computerPlay())));
 
 const paperButton = document.getElementById('paper');
-paperButton.addEventListener('click', () => para.textContent = round('paper', computerPlay()));
+paperButton.addEventListener('click', () => game(round('paper', computerPlay())));
 
 const scissorsButton = document.getElementById('scissors');
-scissorsButton.addEventListener('click', () => para.textContent = round('scissors', computerPlay()));
+scissorsButton.addEventListener('click', () => game(round('scissors', computerPlay())));
 
