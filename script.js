@@ -69,14 +69,12 @@ function capitalise(word)
     return word.join('');
 }
 
-const resultOutput = document.getElementById('result');
-const scoreTally = document.getElementById('score');
-
 const playerChoiceSpan = document.getElementById('player-choice');
 const computerChoiceSpan = document.getElementById('computer-choice');
-
 function setIcons(playerSelection, computerSelection)
 {
+
+
     playerSelection = playerSelection.toLowerCase();
     switch(playerSelection)
     {
@@ -103,10 +101,16 @@ function setIcons(playerSelection, computerSelection)
             computerChoiceSpan.textContent = '✂️';
         break;
     }
+
+    document.getElementById('battle-area').style = "gap:0";
+    playerChoiceSpan.style = "margin-right: -50%";
 }
 
+const resultOutput = document.getElementById('result');
+const scoreTally = document.getElementById('score');
 let humanScore = 0;
 let computerScore = 0;
+let loser;
 
 function game(playerSelection)
 {
@@ -119,10 +123,16 @@ function game(playerSelection)
         if(result.substr(0, 8) === 'You Win!')
         {
             humanScore++;
+            loser = 'computer';
         }
         else if(result.substr(0, 9) == 'You Lose!')
         {
             computerScore++;
+            loser = 'human';
+        }
+        else
+        {
+            loser = null;
         }
 
         setIcons(playerSelection, computerSelection);
@@ -150,4 +160,25 @@ paperButton.addEventListener('click', () => game('paper'));
 
 const scissorsButton = document.getElementById('scissors');
 scissorsButton.addEventListener('click', () => game('scissors'));
+
+function removeTransition(e)
+{
+    console.log(e);
+    if(e.propertyName === "row-gap")
+    {
+        this.style = 'gap: 200%';
+        playerChoiceSpan.style.marginRight = 0;
+
+        if(loser === 'human')
+        {
+            playerChoiceSpan.textContent = "";
+        }
+        else if (loser === 'computer')
+        {
+            computerChoiceSpan.textContent = "";
+        }
+    }
+}
+
+document.getElementById('battle-area').addEventListener('transitionend', removeTransition);
 
