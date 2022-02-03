@@ -51,7 +51,7 @@ function round(playerSelection, computerSelection)
                     return 'You Win! Scissors beats Rock!';
             }
         default:
-            console.error("Invalid player selection! Rock, paper or scissors are the only valid inputs.")
+            throw Error("Invalid player selection! Rock, paper or scissors are the only valid inputs.")
     }
 }
 
