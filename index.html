@@ -3,15 +3,27 @@
     <head>
         <meta charset="utf-8">
         <title>Rock Paper Scissors</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="./script.js" defer></script>
+        <link rel="stylesheet" href="style.css">
     </head>
 
     <body>
-        <h1>Rock papers scissors</h1>
-        <button id="rock">ROCK!</button>
-        <button id="paper">PAPER!</button>
-        <button id="scissors">SCISSORS!</button>
-        <div id="result">Waiting for input...</div>
-        <div id="score">Human: 0 | Computer: 0</div>
+        <div id="content">
+            <h1>Rock papers scissors</h1>
+
+            <div id="result">Waiting for input...</div>
+            <div id="score">Human: 0 | Computer: 0</div>
+
+            <div id="buttons">
+                <button id="rock">ROCK!</button>
+                <button id="paper">PAPER!</button>
+                <button id="scissors">SCISSORS!</button>
+            </div>
+            <div id="battle-area">
+                <span id="player-choice">🪨</span>
+                <span id="computer-choice">✂️</span>
+            </div>
+        </div>
     </body>
 </html>
