@@ -72,11 +72,48 @@ function capitalise(word)
 const resultOutput = document.getElementById('result');
 const scoreTally = document.getElementById('score');
 
+const playerChoiceSpan = document.getElementById('player-choice');
+const computerChoiceSpan = document.getElementById('computer-choice');
+
+function setIcons(playerSelection, computerSelection)
+{
+    playerSelection = playerSelection.toLowerCase();
+    switch(playerSelection)
+    {
+        case 'rock':
+            playerChoiceSpan.textContent = '🪨';
+        break;
+        case 'paper':
+            playerChoiceSpan.textContent = '🧻';
+        break;
+        case 'scissors':
+            playerChoiceSpan.textContent = '✂️';
+        break;
+    }
+
+    switch(computerSelection)
+    {
+        case 'rock':
+            computerChoiceSpan.textContent = '🪨';
+        break;
+        case 'paper':
+            computerChoiceSpan.textContent = '🧻';
+        break;
+        case 'scissors':
+            computerChoiceSpan.textContent = '✂️';
+        break;
+    }
+}
+
 let humanScore = 0;
 let computerScore = 0;
 
-function game(result)
+function game(playerSelection)
 {
+    const computerSelection = computerPlay();
+
+    const result = round(playerSelection, computerSelection)
+
     if(humanScore < 5 && computerScore < 5)
     {
         if(result.substr(0, 8) === 'You Win!')
@@ -87,6 +124,8 @@ function game(result)
         {
             computerScore++;
         }
+
+        setIcons(playerSelection, computerSelection);
 
         resultOutput.textContent = result;
         scoreTally.textContent = `Human: ${humanScore} | Computer: ${computerScore}`
@@ -104,11 +143,11 @@ function game(result)
 
 
 const rockButton = document.getElementById('rock');
-rockButton.addEventListener('click', () => game(round('rock', computerPlay())));
+rockButton.addEventListener('click', () => game('rock'));
 
 const paperButton = document.getElementById('paper');
-paperButton.addEventListener('click', () => game(round('paper', computerPlay())));
+paperButton.addEventListener('click', () => game('paper'));
 
 const scissorsButton = document.getElementById('scissors');
-scissorsButton.addEventListener('click', () => game(round('scissors', computerPlay())));
+scissorsButton.addEventListener('click', () => game('scissors'));
 
